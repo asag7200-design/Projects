@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile – CodeMetrics</title>
+  <meta name="description" content="View student account details, enrollment information, and code analysis statistics.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo-icon">CM</div>
+        <span>CodeMetrics</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="analyzer.html">Analyze Code</a></li>
+        <li><a href="profile.html" class="active">Student Profile</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="analyzer.html" class="btn btn-accent btn-sm"><span>⚡</span> Analyze Code</a>
+        <button id="btn-logout" class="btn btn-outline btn-sm">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile Layout with Sidebar -->
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar" id="sidebar-avatar">R</div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebar-user-name">Rahul Sharma</h4>
+          <span id="sidebar-user-email">student@codemetrics.edu</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+          <span class="sidebar-icon">📊</span>
+          <span>Overview</span>
+        </a>
+        <a href="analyzer.html" class="sidebar-link">
+          <span class="sidebar-icon">💻</span>
+          <span>Submit Java Code</span>
+        </a>
+        <a href="dashboard.html#history-section" class="sidebar-link">
+          <span class="sidebar-icon">📁</span>
+          <span>Submission History</span>
+        </a>
+        <a href="profile.html" class="sidebar-link active">
+          <span class="sidebar-icon">👤</span>
+          <span>Academic Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+          <strong>Semester:</strong> 6th Semester<br>
+          <strong>Course:</strong> B.Tech CSE<br>
+          <strong>Project Phase:</strong> Phase 1 (50 Marks)
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Profile Content -->
+    <main class="dashboard-main">
+      
+      <div class="dashboard-header">
+        <div class="dashboard-header-title">
+          <h1>Student Academic Profile</h1>
+          <p>Personal credentials, course enrollment, and code quality performance</p>
+        </div>
+      </div>
+
+      <div class="profile-card-grid">
+        <!-- Profile Avatar Card -->
+        <div class="profile-avatar-card">
+          <div class="profile-large-avatar">👨‍💻</div>
+          <h3 id="profile-name" style="font-size: 1.3rem; color: var(--primary); margin-bottom: 4px;">Rahul Sharma</h3>
+          <p id="profile-email" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">student@codemetrics.edu</p>
+          <span class="badge badge-score-good" id="profile-sub-count">3 Total Submissions</span>
+
+          <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: left; font-size: 0.85rem; color: var(--text-muted);">
+            <div><strong>Department:</strong> Computer Science & Engineering</div>
+            <div style="margin-top: 6px;"><strong>Evaluation Phase:</strong> Phase 1 (50 / 200 Marks)</div>
+          </div>
+        </div>
+
+        <!-- Academic Information Card -->
+        <div class="content-card" style="margin-bottom: 0;">
+          <div class="card-header">
+            <div class="card-title">
+              <span>🎓</span>
+              <span>Enrollment & System Credentials</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="profile-field-row">
+              <span class="profile-field-label">Student Roll Number:</span>
+              <span class="profile-field-value" id="profile-roll">21CS042</span>
+            </div>
+
+            <div class="profile-field-row">
+              <span class="profile-field-label">Degree Program:</span>
+              <span class="profile-field-value">Bachelor of Technology (B.Tech)</span>
+            </div>
+
+            <div class="profile-field-row">
+              <span class="profile-field-label">Academic Semester:</span>
+              <span class="profile-field-value" id="profile-sem">6th Semester</span>
+            </div>
+
+            <div class="profile-field-row">
+              <span class="profile-field-label">Subject / Module:</span>
+              <span class="profile-field-value">Software Engineering & Quality Assurance</span>
+            </div>
+
+            <div class="profile-field-row">
+              <span class="profile-field-label">Account Created:</span>
+              <span class="profile-field-value" id="profile-joined">Jan 15, 2026</span>
+            </div>
+
+            <div class="profile-field-row">
+              <span class="profile-field-label">Database Record:</span>
+              <span class="profile-field-value" style="font-family: var(--font-mono); font-size: 0.85rem;">MySQL `USERS` (user_id: 1)</span>
+            </div>
+
+            <div style="margin-top: 24px; display: flex; gap: 12px;">
+              <a href="analyzer.html" class="btn btn-primary btn-sm">
+                <span>⚡</span> Analyze Code
+              </a>
+              <a href="dashboard.html" class="btn btn-outline btn-sm">
+                <span>📊</span> View All Submissions
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/analyzer.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

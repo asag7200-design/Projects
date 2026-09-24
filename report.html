@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quality Analysis Report – CodeMetrics</title>
+  <meta name="description" content="Detailed code quality analysis report with metrics, cyclomatic complexity, nesting depth, and issues breakdown.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analyzer.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo-icon">CM</div>
+        <span>CodeMetrics</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="analyzer.html">Analyze Code</a></li>
+        <li><a href="report.html" class="active">Report</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="analyzer.html" class="btn btn-accent btn-sm">⚡ Analyze Another</a>
+        <a href="dashboard.html" class="btn btn-outline btn-sm">My Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Report Main Container -->
+  <main class="analyzer-container">
+
+    <!-- Top Report Header Banner -->
+    <div class="report-header-banner">
+      <div class="report-title-section">
+        <h1 id="report-title">Java Program Report</h1>
+        <div class="report-meta-tags">
+          <span>Submission ID: <strong id="report-id" style="font-family: var(--font-mono); color: var(--primary);">SUB-8491</strong></span>
+          <span>•</span>
+          <span>Student: <strong id="report-student">Rahul Sharma</strong></span>
+          <span>•</span>
+          <span>Analyzed: <strong id="report-date">Just Now</strong></span>
+          <span>•</span>
+          <span class="badge-lang">Java</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button type="button" class="btn btn-outline btn-sm" onclick="window.print()">
+          <span>🖨️</span> Print / Export
+        </button>
+        <a href="analyzer.html" class="btn btn-primary btn-sm">
+          <span>⚡</span> Re-Analyze
+        </a>
+      </div>
+    </div>
+
+    <!-- Executive Quality Score Card -->
+    <section class="score-executive-card">
+      
+      <!-- Radial SVG Score Gauge -->
+      <div class="score-gauge-box">
+        <div class="radial-progress-wrapper">
+          <svg class="radial-progress-svg" viewBox="0 0 170 170">
+            <circle class="radial-progress-circle-bg" cx="85" cy="85" r="70"></circle>
+            <circle class="radial-progress-circle-val" id="radial-circle-val" cx="85" cy="85" r="70" style="stroke-dasharray: 439.82; stroke-dashoffset: 439.82;"></circle>
+          </svg>
+          <div class="radial-progress-content">
+            <div class="radial-score-num" id="score-number">--</div>
+            <div class="radial-score-total">OUT OF 100</div>
+          </div>
+        </div>
+        <div id="score-status-tag" class="score-status-tag badge-score-excellent">
+          Calculating...
+        </div>
+      </div>
+
+      <!-- Score Breakdown Details -->
+      <div class="score-breakdown-details">
+        <h3>Quality Breakdown Dimensions</h3>
+
+        <div class="subscore-row">
+          <div class="subscore-info">
+            <span>Control Flow & Complexity (30%)</span>
+            <span id="val-complexity">--/100</span>
+          </div>
+          <div class="progress-bar-track">
+            <div id="bar-complexity" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="subscore-row">
+          <div class="subscore-info">
+            <span>Readability & Indentation Depth (35%)</span>
+            <span id="val-readability">--/100</span>
+          </div>
+          <div class="progress-bar-track">
+            <div id="bar-readability" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="subscore-row">
+          <div class="subscore-info">
+            <span>Maintainability & Cohesion (35%)</span>
+            <span id="val-maintainability">--/100</span>
+          </div>
+          <div class="progress-bar-track">
+            <div id="bar-maintainability" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 14px;">
+          * Penalties are deducted for high cyclomatic complexity, excessive method length, deep nesting, and naming anomalies.
+        </p>
+      </div>
+    </section>
+
+    <!-- 10 Detailed Code Metrics Summary Grid -->
+    <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--primary); margin-bottom: 16px;">
+      10 Measured Java Structural Metrics
+    </h2>
+
+    <section class="metrics-summary-grid">
+      <div class="metric-card-item">
+        <span class="metric-item-label">Lines of Code (LOC)</span>
+        <span class="metric-item-value" id="metric-loc">0</span>
+        <span class="metric-item-desc">Non-empty, non-comment lines</span>
+      </div>
+
+      <div class="metric-card-item">
+        <span class="metric-item-label">Classes</span>
+        <span class="metric-item-value" id="metric-classes">0</span>
+        <span class="metric-item-desc">Declared class / interface structures</span>
+      </div>
+
+      <div class="metric-card-item">
+        <span class="metric-item-label">Methods</span>
+        <span class="metric-item-value" id="metric-methods">0</span>
+        <span class="metric-item-desc">Total declared method members</span>
+      </div>
+
+      <div class="metric-card-item">
+        <span class="metric-item-label">Variables</span>
+        <span class="metric-item-value" id="metric-vars">0</span>
+        <span class="metric-item-desc">Local and instance fields</span>
+      </div>
+
+      <div class="metric-card-item">
+        <span class="metric-item-label">Loops</span>
+        <span class="metric-item-value" id="metric-loops">0</span>
+        <span class="metric-item-desc">for, while, and do-while iterations</span>
+      </div>
+
+      <div class="metric-card-item">
+        <span class="metric-item-label">Conditions</span>
+        <span class="metric-item-value" id="metric-conditions">0</span>
+        <span class="metric-item-desc">if, else if, switch branching</span>
+      </div>
+
+      <div class="metric-card-item">
+        <span class="metric-item-label">Comment Lines</span>
+        <span class="metric-item-value" id="metric-comments">0</span>
+        <span class="metric-item-desc">Documentation & inline notes</span>
+      </div>
+
+      <div class="metric-card-item">
+        <span class="metric-item-label">Avg Method Length</span>
+        <span class="metric-item-value" id="metric-avg-len">0</span>
+        <span class="metric-item-desc">Recommended limit: &lt; 30 lines</span>
+      </div>
+
+      <div class="metric-card-item">
+        <span class="metric-item-label">Max Nesting Depth</span>
+        <span class="metric-item-value" id="metric-nesting">0</span>
+        <span class="metric-item-desc">Bracket stack depth tracking</span>
+      </div>
+
+      <div class="metric-card-item">
+        <span class="metric-item-label">Cyclomatic Complexity</span>
+        <span class="metric-item-value" id="metric-complexity">0</span>
+        <span class="metric-item-desc">Independent execution paths</span>
+      </div>
+    </section>
+
+    <!-- Detected Issues Section -->
+    <section class="issues-section-card">
+      <div class="issues-header">
+        <div>
+          <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary);">
+            Detected Quality Issues (<span id="count-all-issues">0</span>)
+          </h3>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">
+            Ranked by severity according to academic clean-code criteria
+          </span>
+        </div>
+
+        <div class="severity-pill-group">
+          <button type="button" class="btn btn-sm btn-primary" data-filter-severity="ALL">
+            All
+          </button>
+          <button type="button" class="btn btn-sm btn-outline" data-filter-severity="HIGH">
+            High (<span id="count-high-issues">0</span>)
+          </button>
+          <button type="button" class="btn btn-sm btn-outline" data-filter-severity="MEDIUM">
+            Medium (<span id="count-medium-issues">0</span>)
+          </button>
+          <button type="button" class="btn btn-sm btn-outline" data-filter-severity="LOW">
+            Low (<span id="count-low-issues">0</span>)
+          </button>
+        </div>
+      </div>
+
+      <div class="issues-list" id="issues-list-container">
+        <!-- Rendered dynamically via js/report.js -->
+      </div>
+    </section>
+
+    <!-- Source Code Inspection Viewer with Issue Highlighting -->
+    <section class="inspection-card">
+      <div class="card-header">
+        <div class="card-title">
+          <span>🔍</span>
+          <span>Source Code Inspection & Issue Markers</span>
+        </div>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">
+          Highlighted lines indicate detected quality issues
+        </span>
+      </div>
+
+      <div class="code-view-container" id="code-inspection-body">
+        <!-- Injected line by line via js/report.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" style="padding: 20px 0; margin-top: 40px;">
+    <div class="container" style="text-align: center; font-size: 0.85rem; color: #94a3b8;">
+      &copy; 2026 CodeMetrics – Student Code Quality Analyzer | Academic CSE Semester Project
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/analyzer.js"></script>
+  <script src="js/report.js"></script>
+</body>
+</html>

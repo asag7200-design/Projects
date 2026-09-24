@@ -1,0 +1,6 @@
+{
+  "name": "CodeMetrics – Student Code Quality Analyzer",
+  "description": "A web-based Java source code quality analyzer for students featuring metric calculation, cyclomatic complexity analysis, issue detection, and comprehensive quality scoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

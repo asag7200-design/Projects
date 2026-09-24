@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeMetrics – Student Code Quality Analyzer</title>
+  <meta name="description" content="A web-based Java source code quality analyzer for students featuring metric calculation, cyclomatic complexity analysis, issue detection, and comprehensive quality scoring.">
+  <meta property="og:title" content="CodeMetrics – Student Code Quality Analyzer">
+  <meta property="og:description" content="Analyze. Understand. Improve. College semester project for Java code evaluation.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="main-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" id="brand-link">
+        <div class="nav-logo-icon">CM</div>
+        <span>CodeMetrics</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active" id="nav-home">Home</a></li>
+        <li><a href="#features" id="nav-features">Features</a></li>
+        <li><a href="#how-it-works" id="nav-workflow">How It Works</a></li>
+        <li><a href="#architecture" id="nav-arch">Architecture</a></li>
+        <li><a href="#about" id="nav-about">About</a></li>
+        <li><a href="analyzer.html" id="nav-analyzer">Live Analyzer</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically by js/main.js based on auth state -->
+        <a href="analyzer.html" class="btn btn-outline btn-sm">Try Analyzer</a>
+        <a href="login.html" class="btn btn-primary btn-sm">Student Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="hero-section">
+    <div class="container">
+      <div class="hero-badge">
+        <span>🎓</span> B.Tech CSE Semester Project – Phase 1
+      </div>
+
+      <h1 class="hero-title" id="hero-main-title">CodeMetrics</h1>
+      <p class="hero-tagline" id="hero-tagline">"Analyze. Understand. Improve."</p>
+
+      <p class="hero-desc">
+        A web-based automated quality analysis system designed specifically for students to evaluate Java source code.
+        Detect architectural issues, measure cyclomatic complexity, calculate lines of code, and receive actionable suggestions to master software engineering best practices.
+      </p>
+
+      <div class="hero-cta">
+        <a href="analyzer.html" class="btn btn-accent btn-lg" id="btn-hero-analyze">
+          <span>⚡</span> Analyze Java Code Now
+        </a>
+        <a href="login.html" class="btn btn-outline btn-lg" id="btn-hero-login">
+          <span>🔐</span> Student Portal
+        </a>
+      </div>
+
+      <!-- Quick Stats Ticker -->
+      <div class="hero-highlights">
+        <div class="highlight-box">
+          <div class="highlight-num">10+</div>
+          <div class="highlight-label">Structural Metrics (LOC, Classes, Loops)</div>
+        </div>
+        <div class="highlight-box">
+          <div class="highlight-num">0 – 100</div>
+          <div class="highlight-label">Weighted Quality Score Engine</div>
+        </div>
+        <div class="highlight-box">
+          <div class="highlight-num">Stack & AST</div>
+          <div class="highlight-label">Nesting Depth & Token Analysis</div>
+        </div>
+        <div class="highlight-box">
+          <div class="highlight-num">JDBC + MySQL</div>
+          <div class="highlight-label">Academic Relational Backend</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Core Capabilities</div>
+        <h2 class="section-title">Automated Code Quality Metrics</h2>
+        <p class="section-description">
+          Engineered to give engineering students immediate diagnostic feedback on their Java lab exercises and semester assignments.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">📊</div>
+          <h3 class="feature-title">Structural Metrics</h3>
+          <p class="feature-desc">
+            Instantly counts Lines of Code (LOC), number of classes, declared methods, class fields/variables, loop structures, and conditionals.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">🧠</div>
+          <h3 class="feature-title">Cyclomatic Complexity</h3>
+          <p class="feature-desc">
+            Calculates McCabe's Cyclomatic Complexity through control-flow branching points (<code>if</code>, <code>for</code>, <code>while</code>, <code>case</code>, boolean operators).
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">🧱</div>
+          <h3 class="feature-title">Stack-Based Nesting Depth</h3>
+          <p class="feature-desc">
+            Utilizes bracket-matching Stack data structures to compute maximum indentation and scope nesting levels, flagging deeply nested logic.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">⚠️</div>
+          <h3 class="feature-title">Intelligent Issue Detection</h3>
+          <p class="feature-desc">
+            Detects poor naming conventions, bloated methods exceeding 30 lines, missing Javadoc comments, and lines surpassing 100 characters.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">🎯</div>
+          <h3 class="feature-title">0 to 100 Quality Score</h3>
+          <p class="feature-desc">
+            Generates a comprehensive quality score balanced across complexity, readability, and maintainability with transparent deduction penalties.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">📋</div>
+          <h3 class="feature-title">Submission History & Reports</h3>
+          <p class="feature-desc">
+            Saves all analyzed reports linked to student profiles in MySQL via JDBC PreparedStatement queries for continuous academic evaluation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section section-bg" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Student Workflow</div>
+        <h2 class="section-title">How CodeMetrics Operates</h2>
+        <p class="section-description">
+          A clear, 4-step pipeline that transforms raw Java source code into structured quality insights.
+        </p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <h4 class="step-title">Submit Java Code</h4>
+          <p class="step-desc">
+            Paste Java source code into the clean editor interface or choose from pre-built test cases (good design, long method, or deep nesting).
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <h4 class="step-title">Lexical Tokenization</h4>
+          <p class="step-desc">
+            The Java string analyzer parses tokens, skips comments and blank lines, and populates HashMaps for identifier frequency tracking.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <h4 class="step-title">Heuristic & Rule Evaluation</h4>
+          <p class="step-desc">
+            Analyzers inspect method boundaries, measure nesting depth using stacks, count loops, and classify issues by severity (HIGH, MEDIUM, LOW).
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">4</div>
+          <h4 class="step-title">Interactive Quality Report</h4>
+          <p class="step-desc">
+            Review the overall score gauge, subscores, issue cards with line numbers and suggestions, and highlighted source code inspection view.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture & DFD Section -->
+  <section class="section" id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Academic Design</div>
+        <h2 class="section-title">System Architecture & DFD</h2>
+        <p class="section-description">
+          Strictly conforms to standard B.Tech CSE requirements: HTML/CSS/JS frontend, Java application backend, JDBC connectivity, and MySQL database.
+        </p>
+      </div>
+
+      <div class="architecture-card">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div style="display: inline-flex; align-items: center; gap: 12px; font-weight: 700; color: var(--primary); font-size: 1.1rem;">
+            <span>HTML5 / CSS3 / Vanilla JS</span>
+            <span>&rarr;</span>
+            <span>Java Backend (DAO / Analyzer)</span>
+            <span>&rarr;</span>
+            <span>JDBC API</span>
+            <span>&rarr;</span>
+            <span>MySQL Database</span>
+          </div>
+        </div>
+
+        <div class="dfd-grid">
+          <div class="dfd-box">
+            <h4><span>📌</span> DFD Level 0 (Context Level)</h4>
+            <ul class="dfd-list">
+              <li><strong>External Entity:</strong> Student / Evaluator</li>
+              <li><strong>Input:</strong> User Credentials, Java Source Code, Submission Title</li>
+              <li><strong>Central Process:</strong> CodeMetrics System (0.0)</li>
+              <li><strong>Output:</strong> Code Quality Report, 10 Metrics, Severity-ranked Issues, Improvement Suggestions</li>
+            </ul>
+          </div>
+
+          <div class="dfd-box">
+            <h4><span>⚙️</span> DFD Level 1 (Major Processes)</h4>
+            <ul class="dfd-list">
+              <li><strong>1.0 User Management:</strong> Register, Login, Session Verification</li>
+              <li><strong>2.0 Code Submission:</strong> Capture and validate Java code text</li>
+              <li><strong>3.0 Code Analysis:</strong> Parse tokens, measure metrics, detect issues</li>
+              <li><strong>4.0 Report Generation:</strong> Compute 0-100 quality score and breakdown</li>
+              <li><strong>5.0 Submission History:</strong> Retrieve past student submissions</li>
+            </ul>
+          </div>
+
+          <div class="dfd-box">
+            <h4><span>🗄️</span> Data Stores (MySQL Tables)</h4>
+            <ul class="dfd-list">
+              <li><strong>D1 – USERS:</strong> user_id, name, email, password, created_at</li>
+              <li><strong>D2 – SUBMISSIONS:</strong> submission_id, user_id, title, code, score</li>
+              <li><strong>D3 – ANALYSIS_RESULT:</strong> loc, classes, methods, complexity, readability</li>
+              <li><strong>D4 – CODE_ISSUES:</strong> severity, line_number, issue_type, message, suggestion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Project Section -->
+  <section class="section section-bg" id="about">
+    <div class="container container-sm" style="text-align: center;">
+      <div class="section-subtitle">Academic Overview</div>
+      <h2 class="section-title">About CodeMetrics</h2>
+      <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 24px;">
+        CodeMetrics is developed as a B.Tech Computer Science and Engineering semester project.
+        It bridges the gap between theoretical software engineering principles (such as cohesion, coupling, cyclomatic complexity, and code smells) and practical student lab coding.
+        By providing instant, non-judgmental automated code critiques, students learn to write clean, maintainable, and robust Java applications.
+      </p>
+
+      <div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; text-align: left; margin-bottom: 30px;">
+        <h4 style="color: var(--primary); font-size: 1rem; margin-bottom: 12px; font-weight: 700;">Project Scope & Mark Allocation (Phase 1 / 50 Marks):</h4>
+        <ul style="padding-left: 20px; color: var(--text-muted); font-size: 0.92rem; line-height: 1.8;">
+          <li>Complete 7-page responsive HTML5/CSS3/Vanilla JS UI layout (No external heavy frameworks).</li>
+          <li>Full Java Backend architectural design with DAOs, Models, and Analyzers.</li>
+          <li>MySQL Schema Definition (schema.sql) with normalized tables and relational constraints.</li>
+          <li>Interactive Java code analyzer with test presets and comprehensive report generation.</li>
+          <li>System documentation featuring DFD Level 0, Level 1, Level 2, and viva preparation guide.</li>
+        </ul>
+      </div>
+
+      <a href="analyzer.html" class="btn btn-accent btn-lg">Launch Code Analyzer</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><span>⚡</span> CodeMetrics</h3>
+          <p>
+            Student Code Quality Analyzer – empowering future software engineers with deep insights into source code complexity, maintainability, and architectural standards.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="analyzer.html">Code Analyzer</a></li>
+            <li><a href="dashboard.html">Student Dashboard</a></li>
+            <li><a href="login.html">Login / Register</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Technology Stack</h4>
+          <ul class="footer-links">
+            <li><span class="academic-badge">HTML5 & CSS3</span></li>
+            <li><span class="academic-badge">Vanilla JavaScript</span></li>
+            <li><span class="academic-badge">Java Standard Edition</span></li>
+            <li><span class="academic-badge">JDBC & MySQL</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 CodeMetrics Project. Academic B.Tech CSE Semester Project.</div>
+        <div>Designed for Clean Code Learning & Student Evaluation</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

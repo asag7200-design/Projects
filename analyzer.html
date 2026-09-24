@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Code Analyzer – CodeMetrics</title>
+  <meta name="description" content="Submit Java source code to calculate 10+ code metrics, cyclomatic complexity, nesting depth, and quality issues.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analyzer.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo-icon">CM</div>
+        <span>CodeMetrics</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="analyzer.html" class="active">Analyze Code</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Dynamically managed by js/main.js -->
+        <a href="dashboard.html" class="btn btn-outline btn-sm">My Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Analyzer Main Container -->
+  <main class="analyzer-container">
+    
+    <div class="analyzer-header">
+      <h1>Java Source Code Analyzer</h1>
+      <p>Paste your Java source code below or choose a demonstration test case to evaluate code quality, complexity, and metrics.</p>
+    </div>
+
+    <!-- Presets Bar for Lab / Demo Testing -->
+    <div class="presets-bar">
+      <div class="presets-label">
+        <span>⚡</span>
+        <span>Quick Test Presets (for Semester Evaluation):</span>
+      </div>
+
+      <div class="preset-buttons">
+        <button type="button" class="btn-preset" data-preset="good">
+          ✅ Good Quality Java
+        </button>
+        <button type="button" class="btn-preset" data-preset="longMethod">
+          ⚠️ Long Method (>30 Lines)
+        </button>
+        <button type="button" class="btn-preset" data-preset="deepNesting">
+          🧱 Deep Nesting (>3 Levels)
+        </button>
+        <button type="button" class="btn-preset" data-preset="poorNaming">
+          🏷️ Poor Naming & Unclean
+        </button>
+      </div>
+    </div>
+
+    <!-- Code Editor Card (Custom HTML/CSS Interface - No external editor library) -->
+    <div class="editor-card">
+      <div class="editor-toolbar">
+        <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+          <label for="submission-title" style="font-size: 0.85rem; font-weight: 600; color: var(--primary);">Title / Class:</label>
+          <input type="text" id="submission-title" class="editor-title-input" placeholder="e.g. StudentGradeRegistry.java" value="StudentGradeRegistry.java">
+        </div>
+
+        <div class="editor-meta">
+          <span class="badge-lang">Java 17+</span>
+          <span id="line-count-badge">0 Lines</span>
+          <span id="char-count-badge">0 Chars</span>
+        </div>
+      </div>
+
+      <!-- Editor Body with Synced Line Numbers -->
+      <div class="editor-body">
+        <pre id="line-numbers" class="line-numbers" aria-hidden="true">1</pre>
+        <textarea id="code-input" class="code-textarea" spellcheck="false" placeholder="// Paste your Java source code here...
+public class MyProgram {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello, CodeMetrics!&quot;);
+    }
+}"></textarea>
+      </div>
+
+      <!-- Bottom Actions Bar -->
+      <div class="editor-actions-bar">
+        <div class="editor-btn-group">
+          <button type="button" class="btn btn-outline btn-sm" id="btn-copy">
+            <span>📋</span> Copy Code
+          </button>
+          <button type="button" class="btn btn-outline btn-sm" id="btn-clear" style="color: var(--danger);">
+            <span>🗑️</span> Clear Editor
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="font-size: 0.82rem; color: var(--text-muted); display: none;" id="analysis-status-text">
+            Processing AST tokens...
+          </span>
+          <button type="button" class="btn btn-accent btn-lg" id="btn-analyze">
+            <span>🚀</span> Analyze Java Code
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analysis Criteria Explanatory Card -->
+    <div class="architecture-card" style="margin-top: 24px;">
+      <h3 style="font-size: 1.15rem; color: var(--primary); margin-bottom: 12px;">
+        Evaluated Metrics & Heuristics in Phase 1
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; font-size: 0.88rem; color: var(--text-muted);">
+        <div>
+          <strong style="color: var(--primary);">• 10 Structural Metrics:</strong> LOC, Class definitions, Methods, Variables, Loops (for/while/do), Conditions (if/switch), Comments, Method length, Nesting depth, Cyclomatic complexity.
+        </div>
+        <div>
+          <strong style="color: var(--primary);">• Issue Detection Rules:</strong> Variable naming issues (single letters / numbered suffixes), Methods &gt;30 lines, Nesting &gt;3 levels, Lines &gt;100 chars, Missing documentation.
+        </div>
+        <div>
+          <strong style="color: var(--primary);">• 0–100 Scoring Formula:</strong> Weighted calculation: 30% Cyclomatic Complexity + 35% Readability + 35% Maintainability minus severity-ranked penalties.
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer" style="padding: 20px 0; margin-top: 40px;">
+    <div class="container" style="text-align: center; font-size: 0.85rem; color: #94a3b8;">
+      &copy; 2026 CodeMetrics – Student Code Quality Analyzer | Academic CSE Semester Project
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/analyzer.js"></script>
+</body>
+</html>
